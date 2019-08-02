@@ -1,0 +1,20 @@
+JAVA中获取项目文件路径  :
+http://blog.163.com/michaelgaoit@126/blog/static/11389538620103711613620/
+
+
+一、磁盘中的分割符：
+
+    System.getProperty("java.io.tmpdir")     --不同系统上的磁盘缓存路径
+    System.getProperty("file.separator")     --路径分隔符
+
+    其他：
+                                    dataType         window                 unix
+    File.separator                  String           '/'                    '\'
+    File.separatorChar              char             '/'                    '\'
+    File.pathSeparator              String           ';'                    ':'       此字符用于分隔以路径列表 形式给定的文件序列中的文件名
+    File.pathSeparatorChar          char             ';'                    ':'       此字符用于分隔以路径列表 形式给定的文件序列中的文件名
+    
+    
+二、使用：
+    上传文件到磁盘路径：
+    PathTool.getContextDiskPath(request, "/upload")+File.separator+ image_file.getOriginalFilename()

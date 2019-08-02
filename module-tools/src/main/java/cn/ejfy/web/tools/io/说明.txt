@@ -1,0 +1,12 @@
+
+导入包：
+commons-fileupload-1.3.2.jar
+
+相关配置和类：
+    properties  （settings中的方法  ）
+    SpringContextHolder （settings中的方法  ）
+    settings.java （FileUploadTool.springFileUpload方法）
+    
+
+一、应用：
+    1、springMVC项目中上传文件

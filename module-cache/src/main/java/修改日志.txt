@@ -1,0 +1,12 @@
+#配置（关闭其他缓存）
+j2cache.L1.provider_class = none
+j2cache.L2.provider_class = none
+
+
+#非集群式缓存,关闭广播
+J2CacheBuilder 中修改
+j2cache.broadcast = false
+
+
+# redis 宕机后的处理,使系统正常运行
+主要操作： RedisClient中判断是否已连接，未连接则返回 空对象NullJedisCommands或NullCache

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="module-cache:war">
+    <output-path>$PROJECT_DIR$/module-cache/target</output-path>
+    <root id="archive" name="module-cache.war">
+      <element id="artifact" artifact-name="module-cache:war exploded" />
+    </root>
+  </artifact>
+</component>

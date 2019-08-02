@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="module-aspose" />
+        <module name="module-cache" />
+        <module name="module-pageoffice" />
+        <module name="module-third-party" />
+        <module name="module-tools" />
+        <module name="module-web" />
+        <module name="yjfly-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="aspose" target="1.7" />
+      <module name="module-aspose" target="1.7" />
+      <module name="module-cache" target="1.7" />
+      <module name="module-pageoffice" target="1.7" />
+      <module name="module-third-party" target="1.7" />
+      <module name="module-tool" target="1.7" />
+      <module name="module-tools" target="1.7" />
+      <module name="module-web" target="1.7" />
+      <module name="pageoffice" target="1.7" />
+      <module name="tool" target="1.7" />
+      <module name="yjfly-modules" target="1.7" />
+      <module name="yjfly-web" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

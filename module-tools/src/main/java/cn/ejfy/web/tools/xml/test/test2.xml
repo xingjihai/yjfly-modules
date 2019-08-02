@@ -1,0 +1,14 @@
+<xml>
+    <versions>
+        <version>
+            <name> 第一个版本 </name>
+            <number> 1.0.0 </number>
+            <description> 描述内容 </description>
+        </version>
+        <version>
+            <name> 第二个版本 </name>
+            <number> 1.0.1 </number>
+            <description> 描述内容 </description>
+        </version>
+    </versions>
+</xml>

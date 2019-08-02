@@ -1,0 +1,4 @@
+https://cloud.tencent.com/document/product/866/17730
+
+项目github地址：   SDK for JAVA
+https://github.com/tencentyun/image-java-sdk-v2.0

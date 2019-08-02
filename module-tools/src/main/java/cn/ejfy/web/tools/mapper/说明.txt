@@ -1,0 +1,31 @@
+作用:将客户端json字符串参数转换为对象形式.
+本项目示例:/loginTest/src/com/main/controller/SpringMvcTest.java     mappingValue()
+
+
+客户端请求示例:
+    var person={
+                name:"父亲",
+                sex:44,                    
+                child : {
+                    name:"儿子",
+                    sex:20
+                }
+            }
+        data=JSON.stringify(data);
+        person=JSON.stringify(person);
+        $.ajax({
+            url:"http://192.168.0.34:8036/loginTest/springmvc/invoke2.do",
+            data:person,
+            dataType:"json",
+            type:"post",
+            contentType: "application/json; charset=utf-8",   //注意要吧contentType设置为这个,默认application/x-www-form-urlencoded;charset=utf-8
+            success:function(){
+                alert("success");
+            }
+        })
+
+服务端接收:
+    参考:http://www.cnblogs.com/anai/p/4272573.html
+    public void mappingValue(@RequestBody JSONObject obj, HttpServletRequest request, HttpServletResponse response){
+        Person student=MapperTool.fromJson(obj, Person.class);
+    }

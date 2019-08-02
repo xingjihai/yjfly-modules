@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/module-aspose/module-aspose.iml" filepath="$PROJECT_DIR$/module-aspose/module-aspose.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module-cache/module-cache.iml" filepath="$PROJECT_DIR$/module-cache/module-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module-pageoffice/module-pageoffice.iml" filepath="$PROJECT_DIR$/module-pageoffice/module-pageoffice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module-third-party/module-third-party.iml" filepath="$PROJECT_DIR$/module-third-party/module-third-party.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module-tools/module-tools.iml" filepath="$PROJECT_DIR$/module-tools/module-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module-web/module-web.iml" filepath="$PROJECT_DIR$/module-web/module-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yjfly-modules.iml" filepath="$PROJECT_DIR$/yjfly-modules.iml" />
+    </modules>
+  </component>
+</project>

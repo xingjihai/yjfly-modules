@@ -1,0 +1,34 @@
+一、[附件:SpringContextHolder.java]
+    配置：
+        1、SpringContextHolder实现ApplicationContextAware，下面的类可以直接使用
+        2、xml注入SpringContextHolder.java的bean
+        scope作用域：singleton(单例)     lazy-init为延迟初始化设置,false表示不延迟初始化
+        
+        <bean id="springContextHolder" class="com.legal.common.web.context.SpringContextHolder" lazy-init="false" scope="singleton"/>
+    
+    
+    使用：
+        1、通过getBean获取
+        MemberMng memberManager = SpringContextHolder.getBean("MemberMng");
+        
+        注意：当使用注解注入bean时，只能用下面的方法获取到bean？
+        UserServiceImpl userService2=SpringContextHolder.getBean(UserServiceImpl.class);
+    
+    
+        2、查看是否包含bean：
+        SpringContextHolder.containsBean( ?? )
+        
+        3、--其他功能作用不大
+    
+    
+二、[附件:ThreadContextHolder.java]
+
+    使用：
+    1、在第一个过滤器中
+    ThreadContextHolder.setHttpRequest(request);
+            ThreadContextHolder.setHttpResponse(response);
+            ThreadContextHolder.setSession(request.getSession());
+    
+    2、在后面使用时都用ThreadContextHolder来获取 并进行操作， 否则操作完还需要set进 ThreadContextHolder中！！
+    
+    ThreadContextHolder.getSession().setAttribute("111", 22222);

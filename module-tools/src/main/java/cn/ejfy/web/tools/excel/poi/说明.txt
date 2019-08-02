@@ -1,0 +1,26 @@
+
+导入包：
+poi-3.12.jar
+poi-ooxml-3.12.jar
+poi-ooxml-schemas-3.12.jar
+poi-scratchpad-3.12.jar
+xmlbeans-2.3.0.jar
+
+
+HSSF  xls
+XSSF  xlsx
+
+一、导入
+    工具类： PoiExcelImportTool 支持xls或xlsx
+    方法：
+        1、通过文件位置读取
+        readXlsxByPath(file.getPath());
+        2、通过流读取
+        readXlsxByInputStream(new FileInputStream(file));
+
+二、导出xlsx （无格式，有格式的待拓展）
+    工具类： PoiXSSFExportTool
+    方法：exportExcel(fileName, response, excelMap);
+
+二、导出xls
+    工具类： PoiHSSFStyleTool

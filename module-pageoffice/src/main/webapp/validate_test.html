@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/jquery/jquery-1.4.2.min.js"></script>
+    <script src="lib/validate/jquery.validate.min.js"></script>
+</head>
+<body>
+<form id="validateForm" action="www.baidu.com">
+    <input type="text" name="mobile" id="mobile">
+    <input type="button" value="提交" onclick="formSubmit()">
+</form>
+<script>
+    function formSubmit() {
+
+        $("#validateForm").submit();
+    }
+    $(function () {
+        $("#validateForm").validate({
+//            rules:{
+//                mobile: {
+//                    required: true,
+//                    isTel: true
+//                }
+//            },
+//            message:{
+//                mobile: {
+//                    required: "电话号码不能为空",
+//                    isTel: "电话号码格式错误"
+//                }
+//            }
+        });
+    });
+</script>
+</body>
+</html>

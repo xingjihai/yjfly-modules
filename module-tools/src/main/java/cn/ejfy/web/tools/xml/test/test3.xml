@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE system_versions SYSTEM "http://java.sun.com/dtd/system_versions.dtd">
+<system_versions>
+    <versions>
+        <version>
+            <name> 第一个版本 </name>
+            <number> 1.0.0 </number>
+            <description> 描述内容 </description>
+        </version>
+        <version>
+            <name> 第二个版本 </name>
+            <number> 1.0.1 </number>
+            <description> 描述内容 </description>
+        </version>
+    </versions>
+</system_versions>
