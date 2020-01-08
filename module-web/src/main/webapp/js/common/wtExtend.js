@@ -138,6 +138,56 @@
         }
 
         /**
+         * 字典Map缓存获取
+         * @param dicType  字典类型关键字
+         * TB_NATION 民族
+         * TB_NATIONALITY 国籍
+         * @return [{id:"",text:""},{id:"",text:""}]
+         */
+        ,getDicList:function(dicType){
+            try {
+                if (dicType == null || dicType == "") {
+                    throw new Error( "$.wt.getDicList,参数dicType错误" );
+                }
+                var keyWords="unkown";
+                var url="";
+                if(dicType=="TB_NATION"){
+                    keyWords="TB_NATION";
+                    url="wt://sd/nation/list";
+                }else if(dicType=="TB_NATIONALITY"){
+                    keyWords="TB_NATIONALITY";
+                    url="wt://sd/nationality/list";
+                }else if(dicType=="TB_CASECAUSE"){
+                    keyWords="TB_CASECAUSE";
+                    url="wt://sd/metterreason/select";
+                }else{
+                    keyWords="DIC_" + dicType ;
+                    url="wt://sys/dictionary/cache/list";
+                }
+                var dictionarys = $.wt.getCache(keyWords, function () {
+                    var dics = [];
+                    $.wt.ajax({
+                        async: false,
+                        url: url ,
+                        data: {code: dicType},
+                        success: function (result) {
+                            dics = result.data;
+                            // for (key in dictionarys) {
+                            //     dicArr[dictionarys[key].id] = dictionarys[key].text;
+                            // }
+                        }
+                    });
+                    return dics;
+                });
+
+                return dictionarys;
+            } catch (e) {
+                $.wt.consoleError(e);
+                return [];
+            }
+        }
+
+        /**
          * 字典缓存获取
          * @param dicType  字典类型关键字
          * TB_NATION 民族
@@ -154,37 +204,12 @@
                     return "";
                 }
 
-                var keyWords="unkown";
-                var url="";
-                if(dicType=="TB_NATION"){
-                    keyWords="TB_NATION";
-                    url="wt://sd/nation/list";
-                }else if(dicType=="TB_NATIONALITY"){
-                    keyWords="TB_NATIONALITY";
-                    url="wt://sd/nationality/list";
-                }else if(dicType=="TB_CASECAUSE"){
-                    keyWords="TB_CASECAUSE";
-                    url="wt://sd/metterreason/select";
-                }else{
-                    keyWords="DIC_" + dicType ;
-                    url="wt://sys/dictionary/cache/list";
-                }
-                var dictionaryArr = $.wt.getCache(keyWords, function () {
-                    var dicArr = {};
-                    $.wt.ajax({
-                        async: false,
-                        url: url ,
-                        data: {code: dicType},
-                        success: function (result) {
-                            var dictionarys = result.data;
-                            for (key in dictionarys) {
-                                dicArr[dictionarys[key].id] = dictionarys[key].text;
-                            }
-                        }
-                    });
-                    return dicArr;
-                });
+                var dictionarys = $.wt.getDicList(dicType);
 
+                var dictionaryArr = {};
+                for (key in dictionarys) {
+                    dictionaryArr[dictionarys[key].id] = dictionarys[key].text;
+                }
 
                 if (dictionaryArr[value] != null) {
                     return dictionaryArr[value];
@@ -192,7 +217,7 @@
                 throw new Error("$.wt.getDicValue,无法获取字典:" + dicType + "=" + value);
             } catch (e) {
                 $.wt.consoleError(e);
-                return value;
+                return "";
             }
         }
 
@@ -390,21 +415,56 @@
          * @param fillElement  填充元素id (html元素)
          * @param data 数据
          */
-        ,laytpl:function (templeId,fillElement,data) {
+        ,laytpl:function (templeId,fillElementId,data) {
             try {
                 var laytpl;
                 layui.use('laytpl', function () {
                     laytpl = layui.laytpl;
                 });
+
+                if(!$("#" + templeId)[0]){
+                    throw new Error("$.wt.laytpl,参数templeId错误");
+                }
                 var getTpl = $("#" + templeId)[0].innerHTML;
-                laytpl(getTpl).render(data, function (html) {
+                laytpl(getTpl).render(data||{}, function (html) {
                     html = html.replace(/null/g, "");
-                    $("#" + fillElement)[0].innerHTML = html;
+                    html = html.replace(/undefined/g, "");
+                    if($("#" + fillElementId)[0]){
+                        $("#" + fillElementId)[0].innerHTML = html;
+                    }else{
+                        throw new Error("$.wt.laytpl,参数fillElementId错误");
+                    }
                 });
             } catch (e) {
                 $.wt.consoleError(e);
             }
         }
+
+        /**
+         * 基于laytpl 的模板引擎 https://www.layui.com/doc/modules/laytpl.html
+         * @param templeId   模板id （script）
+         * @param data 数据
+         * @return html 返回替换后的html文本
+         */
+        ,laytplTemple:function (templeId,data) {
+            try {
+                var html="";
+                var laytpl;
+                layui.use('laytpl', function () {
+                    laytpl = layui.laytpl;
+                });
+                var getTpl = $("#" + templeId)[0].innerHTML;
+                laytpl(getTpl).render(data||{}, function (h) {
+                    html = h.replace(/null/g, "");
+                    html = html.replace(/undefined/g, "");
+                });
+                return html;
+            } catch (e) {
+                $.wt.consoleError(e);
+                return "";
+            }
+        }
+
 
 
         // ============== 环境判断   ====================
@@ -417,32 +477,36 @@
          * option.common   默认回调
          */
         ,switchEnv:function (option) {
-            var callFun=function (fun) {
-                if(fun){
-                    fun.call(this);
-                }else if(option.common){
-                    option.common.call(this);
-                }
-            };
-            var ready=function(){
-                if (window.__wxjs_environment == 'miniprogram') {
-                    //微信小程序环境
-                    callFun(option.miniprogram);
+            try {
+                var callFun=function (fun) {
+                    if(fun){
+                        fun.call(this);
+                    }else if(option.common){
+                        option.common.call(this);
+                    }
+                };
+                var ready=function(){
+                    if (window.__wxjs_environment == 'miniprogram') {
+                        //微信小程序环境
+                        callFun(option.miniprogram);
+                    }else{
+                        //微信浏览器环境
+                        callFun(option.wx);
+                    }
+                };
+                var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+                if (ua.match(/MicroMessenger/i) == "micromessenger") {  //在微信中打开
+                    if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) {
+                        document.addEventListener('WeixinJSBridgeReady', ready, false)
+                    } else {
+                        ready();
+                    }
                 }else{
-                    //微信浏览器环境
-                    callFun(option.wx);
+                    //h5环境
+                    callFun(option.h5);
                 }
-            };
-            var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
-            if (ua.match(/MicroMessenger/i) == "micromessenger") {  //在微信中打开
-                if (!window.WeixinJSBridge || !WeixinJSBridge.invoke) {
-                    document.addEventListener('WeixinJSBridgeReady', ready, false)
-                } else {
-                    ready();
-                }
-            }else{
-                //h5环境
-                callFun(option.h5);
+            } catch (e) {
+                $.wt.consoleError(e);
             }
         }
 

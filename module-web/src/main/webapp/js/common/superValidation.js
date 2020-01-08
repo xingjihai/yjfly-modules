@@ -1,6 +1,4 @@
-/**  =========   js验证        =============
- *  提示基于 layer.tips
- *  @author  wuyijia
+/**
  使用：
  控件中添加  rule 属性，如 rule="required;positiveInteger"
  rule说明:

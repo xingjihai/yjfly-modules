@@ -5,8 +5,13 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/6/28.
@@ -57,5 +62,17 @@ public class ObjectMapperUtils {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.valueToTree(object);
         return jsonNode.toString();
+    }
+
+    public static void main(String[] args) {
+        //json转对象（当对象中有对象属性时）
+//        Map<String, Class> classMap = new HashMap<String, Class>();
+//        classMap.put("holiday", HolidayJuhe.class);
+//        classMap.put("list", HolidayDate.class);
+//        JsonConfig jsonConfig = new JsonConfig();
+//        jsonConfig.setCollectionType(List.class);
+//        jsonConfig.setClassMap(classMap);
+//        jsonConfig.setRootClass(HolidayJuhe.class);
+//        List<HolidayJuhe> jsonList = (List<HolidayJuhe>) JSONArray.toCollection(jarray, jsonConfig);
     }
 }

@@ -1,0 +1,71 @@
+{
+
+   "age":52,
+
+   "name":"Jim Carrey",
+
+   "jsnFO":{
+
+      "age":76,
+
+      "name":"Morgan Freeman",
+
+      "jsnSO":{
+
+         "age":83,
+
+         "name":"Clint Eastwood",
+
+         "jsnTO":{
+
+            "age":81,
+
+            "name":"Michael Caine",
+
+            "messages":[
+
+               "You wouldn't hit a man..",
+
+               "At this point, I'd set you..",
+
+               "You know, your bobby dangler.."
+
+            ]
+
+         },
+
+         "messages":[
+
+            "This is the AK-47 assault..",
+
+            "Are you feeling lucky..",
+
+            "When a naked man's chasing a.."
+
+         ]
+
+      },
+
+      "messages":[
+
+         "I once heard a wise man..",
+
+         "Well, what is it today? More..",
+
+         "Bruce... I'm God. Circumstances have.."
+
+      ]
+
+   },
+
+   "messages":[
+
+      "Hey, maybe I will give you a call..",
+
+      "Excuse me, I'd like to ask you a few..",
+
+      "Brain freeze. Alrighty Then I just heard.."
+
+   ]
+
+}
