@@ -5,3 +5,7 @@
     1、实体类继承BaseTree，并实现init_TN和init_PN 方法确定结点字段。
     2、查询出所用的结点，存放进list
     3、调用BaseTree.sortForTree 方法返回一颗结点树
+
+
+
+   使用TreeTools 构造树形结构的ListMap

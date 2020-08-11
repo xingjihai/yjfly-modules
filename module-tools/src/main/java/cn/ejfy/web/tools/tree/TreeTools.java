@@ -12,9 +12,10 @@ import net.sf.json.JSONObject;
 public class TreeTools {
     
     /**
-     * @param allList   以map为单元的List
-     * @param allMap  所有的结点<id,Map>形式
      * @return
+     * idChar
+     * pidChar
+     * childList
      */
     @SuppressWarnings("unchecked")
     public static <T> List<Map<String, Object>>  getTree(List<T> list,String idChar,String pidChar) throws Exception{
